@@ -1,15 +1,26 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, forwardRef } from '@angular/core';
 import places from 'places.js';
+import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 
 @Component({
   selector: 'app-input-adress',
   templateUrl: './input-adress.component.html',
-  styleUrls: ['./input-adress.component.css']
+  styleUrls: ['./input-adress.component.css'],
+  providers: [{
+
+    provide: NG_VALUE_ACCESSOR,
+    multi: true,
+    useExisting: forwardRef( () => InputAdressComponent )
+
+  }]
 })
 
 
-export class InputAdressComponent implements OnInit, AfterViewInit {
+export class InputAdressComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+  private onChange;
+  private onTouched;
   private autocomplete;
+
   public innerValue = {
     address: '',
     lat: 0.00,
@@ -18,11 +29,22 @@ export class InputAdressComponent implements OnInit, AfterViewInit {
 
   @ViewChild('ref', { static: true }) public el: ElementRef;
 
-  constructor() { }
 
+  constructor() { }
+  writeValue(value){
+    console.log(value);
+    this.innerValue= value;
+  }
+  registerOnChange(fn){
+    this.onChange = fn;
+  }
+  registerOnTouched(fn){
+    this.onTouched = fn ;
+  }
   ngOnInit() {
   }
-
+  setDisabledState(disabled: boolean){}
+  
   ngAfterViewInit() {
     this.autocomplete = places({
       appId: 'pl4R2GKC8AAF',
@@ -35,6 +57,7 @@ export class InputAdressComponent implements OnInit, AfterViewInit {
         this.innerValue.lat = e.suggestion.latlng.lat;
         this.innerValue.lng = e.suggestion.latlng.lng;
         this.innerValue.address = e.suggestion.value;
+        this.onChange(this.innerValue);
       }
     });
   }

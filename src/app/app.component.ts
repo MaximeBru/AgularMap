@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -13,7 +13,12 @@ export class AppComponent  {
 
   ngOnInit() {
     this.form = this.fb.group({
-      name: ['']
+      name: [''],
+      address:[{
+        address: '78 Rue du Moulin Vert, Paris 14e Arrondissement, Île-de-France, France',
+        lat: 48.8304,
+        lng: 2.32209
+      }]
     });
   }
   

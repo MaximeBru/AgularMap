@@ -9,7 +9,7 @@
                 </div>
                 <div fxLayout="row">
                     <label fxFlex="20%">Adresse</label>
-                    <app-input-adress></app-input-adress>
+                    <app-input-adress formControlName="address"></app-input-adress>
                 </div>
             </form>
             <pre fxFlex="auto">{{ form.valueChanges | async | json }}</pre>
