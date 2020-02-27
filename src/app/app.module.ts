@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
+import { InputAdressComponent } from './input-adress/input-adress.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { AppComponent } from './app.component';
     FormsModule,
     FlexLayoutModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, InputAdressComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
