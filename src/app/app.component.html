@@ -1,23 +1,9 @@
 <nav>
-    <a routerLink="/" routerLinkActive="active">home</a>
-    <a routerLink="/livraisons" routerLinkActive="active">livraisons</a>
+    <h1>Delivery App</h1>
+    <ul>
+        <li><a routerLink="/" routerLinkActive="active">home</a></li>
+        <li><a routerLink="/livraisons" routerLinkActive="active">livraisons</a></li>
+        <li><a routerLink="/adressform" routerLinkActive="active">formulaire adresse</a></li>
+    </ul>
 </nav>
 <router-outlet></router-outlet>
-<div class="container" fxLayout="column" fxLayoutAlign="center center">
-    <div class="content">
-        <h1>Formulaire</h1>
-        <div fxLayout="row" fxLayoutGap="25px">
-            <form [formGroup]="form" fxLayout="column" fxLayoutGap="30px" fxFlex="100%">
-                <div fxLayout="row">
-                    <label fxFlex="20%">Name</label>
-                    <input fxFlex="auto" formControlName="name" type="text" />
-                </div>
-                <div fxLayout="row">
-                    <label fxFlex="20%">Adresse</label>
-                    <app-input-adress class="input-adress" formControlName="address"></app-input-adress>
-                </div>
-            </form>
-            <pre fxFlex="auto">{{ form.valueChanges | async | json }}</pre>
-        </div>
-    </div>
-</div>

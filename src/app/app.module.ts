@@ -4,14 +4,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { InputAdressComponent } from './input-adress/input-adress.component';
+import { InputAdressComponent } from './adress-form/input-adress/input-adress.component';
 import {LivraisonsComponent} from './livraisons/livraisons.component';
 import {APP_BASE_HREF} from '@angular/common';
 import {LivraisonService} from './service/livraison.service';
 import {HttpClientModule} from '@angular/common/http';
+import { AdressFormComponent } from './adress-form/adress-form.component';
 
 const appRoutes: Routes = [
   { path: 'livraisons', component: LivraisonsComponent },
+  { path: 'adressform', component: AdressFormComponent },
   
 ];
 @NgModule({
@@ -26,7 +28,7 @@ const appRoutes: Routes = [
     FlexLayoutModule,
     HttpClientModule
   ],
-  declarations: [AppComponent, InputAdressComponent, LivraisonsComponent],
+  declarations: [AppComponent, InputAdressComponent, LivraisonsComponent, AdressFormComponent],
   bootstrap: [AppComponent],
   providers: [{provide: APP_BASE_HREF, useValue: '/'},LivraisonService]
 })
