@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { InputAdressComponent } from './input-adress/input-adress.component';
 import {LivraisonsComponent} from './livraisons/livraisons.component';
 import {APP_BASE_HREF} from '@angular/common';
-
+import {LivraisonService} from './service/livraison.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: 'livraisons', component: LivraisonsComponent },
@@ -22,10 +23,11 @@ const appRoutes: Routes = [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   declarations: [AppComponent, InputAdressComponent, LivraisonsComponent],
   bootstrap: [AppComponent],
-  providers: [{provide: APP_BASE_HREF, useValue: '/'}]
+  providers: [{provide: APP_BASE_HREF, useValue: '/'},LivraisonService]
 })
 export class AppModule { }

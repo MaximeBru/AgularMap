@@ -1,3 +1,11 @@
 <p>
-  livraisons works!
+    livraisons works!
 </p>
+<li *ngFor="let livraison of livraisons">
+    <div>id: {{ livraison.id }}</div>
+    <div>adresse: {{ livraison.adresse }}</div>
+    <div>codePostal: {{ livraison.codePostal }}</div>
+    <div>ville: {{ livraison.ville }}</div>
+    <div>longitude: {{ livraison.longitude }}</div>
+    <div>latitude: {{ livraison.latitude }}</div>
+</li>
