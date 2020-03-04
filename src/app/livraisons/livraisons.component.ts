@@ -15,7 +15,7 @@ export class LivraisonsComponent implements OnInit {
 
   ngOnInit() {
     this.livraisonService.getLivraisons().subscribe( livraisons => {
-     console.log('livraisons:',livraisons);
+     console.log('livraisons:', livraisons);
       if (livraisons){
         this.livraisons = livraisons
       }else{
