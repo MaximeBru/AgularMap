@@ -1,19 +1,31 @@
-import { NgModule } from '@angular/core';
+import {Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { InputAdressComponent } from './input-adress/input-adress.component';
+import {LivraisonsComponent} from './livraisons/livraisons.component';
+import {APP_BASE_HREF} from '@angular/common';
 
+
+const appRoutes: Routes = [
+  { path: 'livraisons', component: LivraisonsComponent },
+  
+];
 @NgModule({
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     FlexLayoutModule
   ],
-  declarations: [AppComponent, InputAdressComponent],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent, InputAdressComponent, LivraisonsComponent],
+  bootstrap: [AppComponent],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}]
 })
 export class AppModule { }
