@@ -1,18 +1,18 @@
-<div class="container" fxLayout="column" fxLayoutAlign="center center">
-  <div class="content">
-      <h1>Formulaire</h1>
-      <div fxLayout="row" fxLayoutGap="25px">
-          <form [formGroup]="form" fxLayout="column" fxLayoutGap="30px" fxFlex="100%">
-              <div fxLayout="row">
-                  <label fxFlex="20%">Name</label>
-                  <input fxFlex="auto" formControlName="name" type="text" />
-              </div>
-              <div fxLayout="row">
-                  <label fxFlex="20%">Adresse</label>
-                  <app-input-adress class="input-adress" formControlName="address"></app-input-adress>
-              </div>
-          </form>
-          <pre fxFlex="auto">{{ form.valueChanges | async | json }}</pre>
-      </div>
-  </div>
+<div class="container">
+    <div class="content">
+        <h1>Formulaire</h1>
+        <div fxLayoutGap="50px">
+            <form [formGroup]="form" fxLayoutGap="30px">
+                <div fxLayout="row" fxLayoutGap="30px">
+                    <label>Name</label>
+                    <input formControlName="name" type="text" />
+                </div>
+                <div fxLayoutGap="30px">
+                    <label>Adresse</label>
+                    <app-input-adress fxLayout="row" fxLayoutGap="50px" class="input-adress" formControlName="address"></app-input-adress>
+                </div>
+            </form>
+            <pre fxFlex="auto">{{ form.valueChanges | async | json }}</pre>
+        </div>
+    </div>
 </div>
