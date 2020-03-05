@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {LivraisonService} from '../service/livraison.service';
 
 @Component({
   selector: 'app-adress-form',
@@ -8,8 +9,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AdressFormComponent implements OnInit {
   public form: FormGroup;
+  public livraisons:{};
+  public livraison: [];
+  adress: any;
 
-  constructor(public fb: FormBuilder) {}
+  constructor(public fb: FormBuilder, private livraisonService : LivraisonService) {}
+
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -21,5 +26,8 @@ export class AdressFormComponent implements OnInit {
       }]
     });
   }
-
+ // public addLivraison(){
+   // this.livraisons.post({adress:this.adress});
+    //this.livraisonService.createLivraisons(this.livraisons)
+  //}
 }

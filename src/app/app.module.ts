@@ -1,4 +1,5 @@
-import {Component, NgModule } from '@angular/core';
+import {Component, NgModule} from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -10,6 +11,8 @@ import {APP_BASE_HREF} from '@angular/common';
 import {LivraisonService} from './service/livraison.service';
 import {HttpClientModule} from '@angular/common/http';
 import { AdressFormComponent } from './adress-form/adress-form.component';
+
+
 
 const appRoutes: Routes = [
   { path: 'livraisons', component: LivraisonsComponent },
@@ -23,6 +26,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
     FlexLayoutModule,
