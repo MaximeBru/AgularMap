@@ -14,6 +14,8 @@
     "@angular/platform-browser": "^8.0.0",
     "@angular/platform-browser-dynamic": "^8.0.0",
     "@angular/router": "^8.0.0",
+    "@tomtom-international/web-sdk-maps": "^5.48.1",
+    "@tomtom-international/web-sdk-services": "^5.48.1",
     "core-js": "2.6",
     "leaflet": "^1.6.0",
     "node": "^13.8.0",
