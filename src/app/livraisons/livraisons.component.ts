@@ -35,35 +35,36 @@ export class LivraisonsComponent implements OnInit {
       zoom: 14,
     });
   
-    let firstMarker = new tt.Marker().setLngLat(sodifranceCoordinates).addTo(map);
+   
    let addControl = map.addControl(new tt.FullscreenControl());
     map.addControl(new tt.NavigationControl());
     let initCoord = LivraisonArray.push(sodifranceCoordinates);//(seras remplacé par la geoloc du livreur)
+   // let firstMarker = new tt.Marker().setLngLat(sodifranceCoordinates).addTo(map);
+
 //===================================recuperation des livraisons et traitement des cooordonnées=========================
       //recuperation des livraisons et des coordonnées avec initialisation des marqueurs
-
+ 
    this.livraisonService.getLivraisons().subscribe( livraisons => {
      
    console.log('livraisons:', livraisons);
 
    if (livraisons){
      this.livraisons = livraisons
-   
      for (  livraison of livraisons) {
-       //on stock les nouvelles coordonnées dans un array au format voulu par l'api
-      
-        let livraisonsCoordinate = [livraison.longitude, livraison.latitude ]
-       let livLenght = LivraisonArray.push(livraisonsCoordinate)
-        //on génere les marquer (la variable apparait comme inutilisée mais est bien comprise par le sdk de l'api tomtom)
-       let livraisonMarker = new tt.Marker({ pitchAlignment:'auto'}).setLngLat(livraisonsCoordinate).addTo(map);// on 
-     
-     }
-    
+      //on stock les nouvelles coordonnées dans un array au format voulu par l'api
+      let livraisonsCoordinate = [livraison.longitude, livraison.latitude];
+      let livLenght = LivraisonArray.push(livraisonsCoordinate);
+    }
    }else{
      this.livraisons = []
    }
-  
+   //on génere les marquer (la variable apparait comme inutilisée mais est bien comprise par le sdk de l'api tomtom)
+   LivraisonArray.forEach ( function(element){
+    new tt.Marker().setLngLat(element).addTo(map);
+  });
+
   //recherche du layer (generation des routes ) cette fonction bug souvent et je ne sais pas pourquoi
+  
   function findFirstBuildingLayerId() {
     const layers = map.getStyle().layers
     for (let index in layers) {
@@ -88,8 +89,6 @@ export class LivraisonsComponent implements OnInit {
   })
     .go()
     .then(function(response) {
-      console.log(response.toGeoJson());
-
       let geojson = response.toGeoJson();
       map.addLayer({
           'id': 'route',
