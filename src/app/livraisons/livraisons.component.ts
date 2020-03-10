@@ -3,13 +3,13 @@ import {LivraisonService} from '../service/livraison.service';
 import tt from '@tomtom-international/web-sdk-maps';
 import * as tott from '@tomtom-international/web-sdk-services';
 
-
 @Component({
   selector: 'app-livraisons',
   templateUrl: './livraisons.component.html',
   styleUrls: ['./livraisons.component.css'],
 
 })
+
 export class LivraisonsComponent implements OnInit {
   public livraisons:{};
   public livraison: {};
@@ -21,7 +21,7 @@ export class LivraisonsComponent implements OnInit {
   ngOnInit() {
     let sodifranceCoordinates = [ 2.3829006, 48.8282867 ];
     let routes = [];
-    let livraisonsCoordinate = [];
+    let livraisonsCoordinate = [];// certaines variables apparaissent comme inutilisée mais sont bien comprise par le sdk de l'api tomtom
     const routeWeight = 9;
     const routeBackgroundWeight = 12;
     let livraison: any;
@@ -35,11 +35,12 @@ export class LivraisonsComponent implements OnInit {
       zoom: 14,
     });
   
-   
-   let addControl = map.addControl(new tt.FullscreenControl());
+  
+   let addControl = map.addControl(new tt.FullscreenControl()); //bouton de controle de la map
     map.addControl(new tt.NavigationControl());
+
     let initCoord = LivraisonArray.push(sodifranceCoordinates);//(seras remplacé par la geoloc du livreur)
-   // let firstMarker = new tt.Marker().setLngLat(sodifranceCoordinates).addTo(map);
+ 
 
 //===================================recuperation des livraisons et traitement des cooordonnées=========================
       //recuperation des livraisons et des coordonnées avec initialisation des marqueurs
@@ -58,7 +59,8 @@ export class LivraisonsComponent implements OnInit {
    }else{
      this.livraisons = []
    }
-   //on génere les marquer (la variable apparait comme inutilisée mais est bien comprise par le sdk de l'api tomtom)
+   //on génere les Markers 
+
    LivraisonArray.forEach ( function(element){
     new tt.Marker().setLngLat(element).addTo(map);
   });
@@ -108,11 +110,8 @@ export class LivraisonsComponent implements OnInit {
     
 })
 
-//=============================== code des destinations de livraisons ===================================================
 
-    // if points have been added while we are waiting for the response we request the route again
 
-//-
 }
 
 }
